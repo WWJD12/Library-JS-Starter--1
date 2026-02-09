@@ -27,13 +27,23 @@ ${book.title}
 ${ratingHTML(book.rating)}
 </div>
 <div class="book__price">
-<span class=>$${book.originalPrice.toFixed(2)}</span> 
+<span class="book__price--normal">$59.95</span> $14.95
+${priceHTML(book.originalPrice, book.salePrice)}
 </div>
 </div>
 `;
 }).join("");
 
 booksWrapper.innerHTML = booksHtml; 
+}
+function priceHTML(originalPrice, salePrice) {
+if (!salePrice) {
+    return `$${originalPrice.tofixed(2)}`
+} 
+else {
+ return `<span class="book__price--normal">$${originalPrice}</span> $${salePrice}`
+}
+return `there is a sale`
 }
 
 function ratingHTML(rating) {
