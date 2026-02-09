@@ -4,7 +4,8 @@ function renderBooks() {
 const books = getBooks();
 
 const booksHtml = books.map((book) => {
- return `<div class="book">
+ return `
+ <div class="book">
 <figure class="book__img--wrapper">
 <img class="book__img" src="${book.url}" alt="">
 </figure>
@@ -21,9 +22,9 @@ ${books[0].title}
 <div class="book__price">
 <span class="book__price--normal">$${books[0].originalPrice}</span> $${books[0].salePrice}
 </div>
-</div>`
-});
-  .join("");
+</div>
+`;
+}).join("");
 
 console.log(booksHtml)
 
