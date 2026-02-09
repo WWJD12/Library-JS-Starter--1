@@ -1,14 +1,13 @@
-function renderBooks(filter) {
+async function renderBooks(filter) {
   const booksWrapper = document.querySelector(`.books`);
+const books = await getBooks();
+console.log(books)
 
-const books = getBooks();
-
-console.log(filter)
 if (filter === 'LOW__TO__HIGH') {
- books.sort((a, b) => a.originalPrice - b.originalPrice);
+ books.sort((a, b) => (a.salePrice || a.originalPrice) - (b.salePrice || b.originalPrice));
  }
 else if (filter === 'HIGH__TO__LOW') {
- books.sort((a, b) => b.originalPrice - a.originalPrice);
+ books.sort((a, b) => (b.salePrice || b.originalPrice) - (a.salePrice || a.originalPrice));
 }
 else if (filter === 'RATING') {
  books.sort((a, b) => b.rating - a.rating);
@@ -38,12 +37,9 @@ booksWrapper.innerHTML = booksHtml;
 }
 function priceHTML(originalPrice, salePrice) {
 if (!salePrice) {
-    return `$${originalPrice.tofixed(2)}`
+    return `$${originalPrice.toFixed(2)}`
 } 
-else {
- return `<span class="book__price--normal">$${originalPrice}</span> $${salePrice}`
-}
-return `there is a sale`
+   return `<span class="book__price--normal">$${originalPrice.toFixed(2)}</span>$${salePrice.toFixed(2)}`
 }
 
 function ratingHTML(rating) {
@@ -52,7 +48,7 @@ for (let i = 0; i < Math.floor (rating); ++i) {
   ratingHTML += '<i class="fas fa-star"></i>'
 }
 if (!Number.isInteger(rating)) {
-  ratingHTML += '<i class="fas fa-star-half-alt"></i>'
+  ratingHTML += '<i class="fas fa-star-half-alt"></i>\n'
 }
 return ratingHTML;
 }
@@ -62,12 +58,14 @@ function filterBooks(event) {
   }
 
 setTimeout(() => {
-renderBooks();
+//renderBooks();
 }); 
 // FAKE DATA
 function getBooks() {
-  return [
-    {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve([
+        {
       id: 1,
       title: "Crack the Coding Interview",
                 url: "assets/crack the coding interview.png",
@@ -155,5 +153,7 @@ function getBooks() {
       salePrice: null,
       rating: 4.5,
     },
-  ]
+  ])
+    }, 1000)
+  }) 
 }
