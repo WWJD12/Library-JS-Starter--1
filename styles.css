@@ -48,7 +48,7 @@ li {
 
 h1 {
   font-size: 56px;
-  color: #7342d6;
+  color: #0000ff;
   margin-bottom: 24px;
   text-align: center;
 }
@@ -68,7 +68,7 @@ button:active {
 }
 
 .btn {
-  background-color: #7342d6;
+  background-color: #0000ff;
   color: white;
   padding: 12px 24px;
   font-size: 20px;
@@ -76,8 +76,8 @@ button:active {
   border: none;
 }
 
-.purple {
-  color: #7342d6;
+.blue {
+  color: #0000ff;
 }
 
 .logo {
@@ -98,7 +98,7 @@ button:active {
   margin-left: 16px;
   text-decoration: none;
   font-size: 20px;
-  color: #7342d6;
+  color: #0000ff;
   font-weight: bold;
   padding: 8px;
 }
@@ -108,7 +108,7 @@ button:active {
 }
 
 .nav__link--primary {
-  border: 2px solid #7342d6;
+  border: 2px solid #0000ff;
   border-radius: 4px;
 }
 
@@ -120,7 +120,7 @@ button:active {
   background-color: transparent;
   font-size: 40px;
   border: none;
-  color: #7342d6;
+  color: #0000ff;
   display: none;
 }
 
@@ -287,7 +287,7 @@ HIGHLIGHTS
 
 .highlight__img {
   border: 2px solid #7342d65d;
-  color: #7342d6;
+  color: #0000ff;
   width: 100px;
   height: 100px;
   display: flex;
@@ -457,7 +457,7 @@ select {
   justify-content: center;
   padding-top: 60px;
   font-size: 60px;
-  color: #7342d6;
+  color: #0000ff;
 }
 
 .books__loading--spinner {
