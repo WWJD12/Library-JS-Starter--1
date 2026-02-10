@@ -2,12 +2,12 @@ let books;
 
 async function renderBooks(filter) {
   const booksWrapper = document.querySelector(`.books`);
-  booksWrapper.classList += " books__loading"
+  booksWrapper.classList +=" books__loading";
 
   if (!books){
  books = await getBooks();
 }
-  booksWrapper.classList.remove("books__loading")
+  booksWrapper.classList.remove("books__loading");
 
 if (filter === 'LOW__TO__HIGH') {
  books.sort((a, b) => (a.salePrice || a.originalPrice) - (b.salePrice || b.originalPrice));
@@ -23,7 +23,7 @@ const booksHtml = books.map((book) => {
  return `
  <div class="book">
 <figure class="book__img--wrapper">
-<img class="book__img" src="${book.url}" alt="">
+<img class="book__img" src="${book.url}" alt="${book.url}">
 </figure>
 <div class="book__title">
 ${book.title}
@@ -32,7 +32,6 @@ ${book.title}
 ${ratingHTML(book.rating)}
 </div>
 <div class="book__price">
-<span class="book__price--normal">$59.95</span> $14.95
 ${priceHTML(book.originalPrice, book.salePrice)}
 </div>
 </div>
@@ -64,7 +63,7 @@ function filterBooks(event) {
   }
 
 setTimeout(() => {
-//renderBooks();
+renderBooks();
 }); 
 // FAKE DATA
 function getBooks() {
